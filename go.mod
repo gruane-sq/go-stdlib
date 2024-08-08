@@ -1,4 +1,4 @@
-module github.com/opentracing-contrib/go-stdlib
+module github.com/gruane-sq/go-stdlib
 
 go 1.14
 
