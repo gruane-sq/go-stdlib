@@ -122,7 +122,7 @@ func MiddlewareFunc(tr opentracing.Tracer, h http.HandlerFunc, options ...MWOpti
 			return
 		}
 		ctx, _ := tr.Extract(opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(r.Header))
-		sp := tr.StartSpan(opts.opNameFunc(r), ext.RPCServerOption(ctx))
+		sp := tr.StartSpan(opts.opNameFunc(r), ext.RPCServerOption(ctx), opentracing.ChildOf(ctx))
 		ext.HTTPMethod.Set(sp, r.Method)
 		ext.HTTPUrl.Set(sp, opts.urlTagFunc(r.URL))
 		ext.Component.Set(sp, componentName)
